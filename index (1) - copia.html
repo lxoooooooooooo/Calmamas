@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CALMA+ | Espacio de bienestar</title>
+
+<style>
+
+/* ===== DISEÑO GENERAL ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f8f6;
+    color: #30443b;
+    line-height: 1.6;
+}
+
+/* ===== NAVEGACIÓN ===== */
+
+.navbar {
+    height: 70px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 1px solid #e5ebe7;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #496d5b;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #596d63;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #496d5b;
+}
+
+/* ===== INICIO ===== */
+
+.inicio {
+    min-height: 620px;
+    padding: 80px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: #edf5f0;
+}
+
+.inicio-contenido {
+    max-width: 600px;
+}
+
+.etiqueta {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #72927f;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.inicio h1 {
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+.descripcion {
+    max-width: 540px;
+    color: #687a71;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+.boton-principal {
+    border: none;
+    padding: 15px 25px;
+    border-radius: 25px;
+    background: #648c75;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.boton-principal:hover {
+    opacity: 0.85;
+}
+
+/* ===== CÍRCULO ===== */
+
+.decoracion {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circulo-principal {
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background: #d7e9de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #577866;
+    font-size: 25px;
+    font-weight: bold;
+    box-shadow: 0 20px 50px rgba(60, 90, 75, 0.12);
+}
+
+/* ===== ESTADO ===== */
+
+.estado {
+    padding: 90px 8%;
+    text-align: center;
+    background: white;
+}
+
+.estado h2,
+.espacios h2,
+.sobre h2 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.texto-centro {
+    color: #74837c;
+    margin-bottom: 35px;
+}
+
+.emociones {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.emociones button {
+    padding: 14px 19px;
+    background: #f6f9f7;
+    border: 1px solid #dfe8e3;
+    border-radius: 12px;
+    color: #50655b;
+    cursor: pointer;
+}
+
+.emociones button:hover {
+    background: #e8f2ec;
+}
+
+.emociones button.seleccionado {
+    background: #dceee3;
+    border-color: #70927e;
+}
+
+#mensaje-estado {
+    margin-top: 25px;
+    color: #527561;
+    font-weight: bold;
+}
+
+/* ===== ESPACIOS ===== */
+
+.espacios {
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.tarjetas {
+    max-width: 1100px;
+    margin: 50px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    text-align: left;
+}
+
+.tarjeta {
+    padding: 30px;
+    background: white;
+    border: 1px solid #e2eae5;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(50, 80, 65, 0.08);
+}
+
+.numero {
+    font-size: 13px;
+    color: #8ba495;
+    margin-bottom: 15px;
+}
+
+.tarjeta h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.tarjeta p {
+    color: #718078;
+    font-size: 15px;
+    margin-bottom: 22px;
+}
+
+.tarjeta button {
+    border: none;
+    background: #edf5f0;
+    color: #4f7561;
+    padding: 10px 17px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ===== HERRAMIENTAS ===== */
+
+.herramienta {
+    padding: 70px 8%;
+    background: white;
+    text-align: center;
+}
+
+#contenido-herramienta {
+    max-width: 700px;
+    margin: auto;
+    padding: 45px;
+    background: #edf5f0;
+    border-radius: 25px;
+}
+
+#contenido-herramienta h2 {
+    margin-bottom: 12px;
+}
+
+#contenido-herramienta p {
+    color: #687870;
+}
+
+/* ===== RESPIRACIÓN ===== */
+
+.respirar-circulo {
+    width: 130px;
+    height: 130px;
+    margin: 30px auto;
+    border-radius: 50%;
+    background: #d5e9dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4f7561;
+    font-weight: bold;
+}
+
+.respirar-circulo.respirando {
+    animation: respirar 6s ease-in-out infinite;
+}
+
+@keyframes respirar {
+    0% {
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(0.8);
+    }
+}
+
+/* ===== CHAT ===== */
+
+.chat {
+    max-width: 500px;
+    margin: 25px auto;
+}
+
+#mensajes {
+    text-align: left;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    min-height: 80px;
+}
+
+.chat input {
+    width: 70%;
+    padding: 12px;
+    border: 1px solid #dce5df;
+    border-radius: 20px;
+    outline: none;
+}
+
+.chat button,
+.herramienta button {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    background: #648c75;
+    color: white;
+    cursor: pointer;
+}
+
+/* ===== JUEGO (color) ===== */
+
+.juego {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    max-width: 500px;
+    margin: 25px auto;
+}
+
+#juegoTexto {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* ===== MENÚ DE JUEGOS ===== */
+
+.juego-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.juego-menu button {
+    background: white;
+    color: #4f7561;
+    border: 1px solid #cfe0d6;
+}
+
+.juego-menu button:hover {
+    background: #dceee3;
+}
+
+.volver {
+    margin-top: 25px;
+    background: transparent !important;
+    color: #74837c !important;
+    text-decoration: underline;
+    font-weight: normal;
+    padding: 6px 10px !important;
+}
+
+/* ===== BURBUJAS ===== */
+
+.burbujas-zona {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    max-width: 380px;
+    margin: 25px auto;
+}
+
+.burbuja {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    box-shadow: 0 6px 14px rgba(60, 90, 75, 0.08);
+}
+
+.burbuja:hover {
+    transform: scale(1.1);
+}
+
+.burbuja.reventada {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ===== CONTADOR DE RESPIRACIÓN ===== */
+
+.respiracion-contador {
+    font-size: 55px;
+    font-weight: bold;
+    color: #4f7561;
+    margin: 20px;
+}
+
+/* ===== TEMPORIZADOR ===== */
+
+.temporizador {
+    font-size: 45px;
+    font-weight: bold;
+    color: #527561;
+    margin: 25px;
+}
+
+/* ===== MÚSICA ===== */
+
+.musica-embed {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.musica-embed iframe {
+    max-width: 100%;
+}
+
+/* ===== CONSEJOS DINÁMICOS ===== */
+
+.categorias-consejo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0 25px;
+}
+
+.categorias-consejo button {
+    background: white;
+    border: 1px solid #cfe0d6;
+    color: #50655b;
+    padding: 9px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+}
+
+.categorias-consejo button.activa {
+    background: #648c75;
+    color: white;
+    border-color: #648c75;
+}
+
+.tarjeta-consejo {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    max-width: 480px;
+    margin: 0 auto;
+    font-size: 16px;
+    animation: aparecerConsejo 0.35s ease;
+}
+
+@keyframes aparecerConsejo {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== SOBRE ===== */
+
+.sobre {
+    padding: 90px 8%;
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+}
+
+.sobre p {
+    color: #687870;
+    margin-top: 18px;
+}
+
+/* ===== PIE ===== */
+
+footer {
+    padding: 40px;
+    text-align: center;
+    background: #30443b;
+    color: white;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* ===== CELULAR ===== */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        padding: 0 6%;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .inicio {
+        flex-direction: column;
+        text-align: center;
+        padding: 70px 7%;
+    }
+
+    .descripcion {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .decoracion {
+        width: 280px;
+        height: 280px;
+    }
+
+    .circulo-principal {
+        width: 210px;
+        height: 210px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .estado,
+    .espacios {
+        padding: 70px 6%;
+    }
+
+    .estado h2,
+    .espacios h2,
+    .sobre h2 {
+        font-size: 30px;
+    }
+
+    .burbujas-zona {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- ===== NAVEGACIÓN ===== -->
+
+<header class="navbar">
+
+    <div class="logo">
+        CALMA+
+    </div>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#estado">Mi estado</a>
+        <a href="#espacios">Espacios</a>
+        <a href="#sobre">Proyecto</a>
+    </nav>
+
+</header>
+
+
+<!-- ===== INICIO ===== -->
+
+<section class="inicio" id="inicio">
+
+    <div class="inicio-contenido">
+
+        <div class="etiqueta">
+            UN ESPACIO PARA HACER UNA PAUSA
+        </div>
+
+        <h1>
+            Respira.<br>
+            Tómate un momento para ti.
+        </h1>
+
+        <p class="descripcion">
+            CALMA+ es un espacio digital pensado para acompañarte
+            durante momentos de estrés o ansiedad mediante diferentes
+            actividades de relajación.
+        </p>
+
+        <button class="boton-principal" onclick="irAEspacios()">
+            Explorar CALMA+
+        </button>
+
+    </div>
+
+
+    <div class="decoracion">
+
+        <div class="circulo-principal">
+            CALMA+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===== ESTADO ===== -->
+
+<section class="estado" id="estado">
+
+    <div class="etiqueta">
+        CALMA+ · ANTES DE EMPEZAR
+    </div>
+
+    <h2>
+        ¿Cómo te sientes ahora?
+    </h2>
+
+    <p class="texto-centro">
+        Selecciona la opción que más se acerque a cómo te sientes.
+    </p>
+
+
+    <div class="emociones">
+
+        <button onclick="seleccionarEstado(this, 'Tranquilo/a')">
+            Tranquilo/a
+        </button>
+
+        <button onclick="seleccionarEstado(this, 'Bien')">
+            Bien
+        </button>
+
+        <button onclick="seleccionarEstado(this, 'Neutral')">
+            Neutral
+        </button>
+
+        <button onclick="seleccionarEstado(this, 'Estresado/a')">
+            Estresado/a
+        </button>
+
+        <button onclick="seleccionarEstado(this, 'Ansioso/a')">
+            Ansioso/a
+        </button>
+
+    </div>
+
+    <div id="mensaje-estado"></div>
+
+</section>
+
+
+<!-- ===== ESPACIOS ===== -->
+
+<section class="espacios" id="espacios">
+
+    <div class="etiqueta">
+        ESPACIOS DE CALMA
+    </div>
+
+    <h2>
+        ¿Qué necesitas en este momento?
+    </h2>
+
+    <p class="texto-centro">
+        Elige una opción para comenzar.
+    </p>
+
+
+    <div class="tarjetas">
+
+
+        <!-- RESPIRACIÓN -->
+
+        <div class="tarjeta">
+
+            <div class="numero">01</div>
+
+            <h3>
+                Respiración
+            </h3>
+
+            <p>
+                Realiza un ejercicio de respiración guiada
+                para disminuir la tensión y hacer una pausa.
+            </p>
+
+            <button onclick="mostrarRespiracion()">
+                Comenzar
+            </button>
+
+        </div>
+
+
+        <!-- JUEGOS -->
+
+        <div class="tarjeta">
+
+            <div class="numero">02</div>
+
+            <h3>
+                Juegos relajantes
+            </h3>
+
+            <p>
+                Actividades sencillas para distraer tu atención
+                durante unos minutos.
+            </p>
+
+            <button onclick="mostrarJuego()">
+                Ver juegos
+            </button>
+
+        </div>
+
+
+        <!-- CONSEJOS -->
+
+        <div class="tarjeta">
+
+            <div class="numero">03</div>
+
+            <h3>
+                Caja de consejos
+            </h3>
+
+            <p>
+                Encuentra palabras alentadoras y consejos
+                para acompañarte durante este momento.
+            </p>
+
+            <button onclick="mostrarConsejo()">
+                Ver consejo
+            </button>
+
+        </div>
+
+
+        <!-- CHAT -->
+
+        <div class="tarjeta">
+
+            <div class="numero">04</div>
+
+            <h3>
+                Chat de apoyo
+            </h3>
+
+            <p>
+                Escribe lo que estás sintiendo y recibe
+                una respuesta de orientación y apoyo.
+            </p>
+
+            <button onclick="mostrarChat()">
+                Abrir chat
+            </button>
+
+        </div>
+
+
+        <!-- PLAYLIST -->
+
+        <div class="tarjeta">
+
+            <div class="numero">05</div>
+
+            <h3>
+                Música relajante
+            </h3>
+
+            <p>
+                Escucha una selección de canciones tranquilas
+                para acompañar tu momento de pausa.
+            </p>
+
+            <button onclick="mostrarMusica()">
+                Escuchar música
+            </button>
+
+        </div>
+
+
+        <!-- TEMPORIZADOR -->
+
+        <div class="tarjeta">
+
+            <div class="numero">06</div>
+
+            <h3>
+                Pausa de 1 minuto
+            </h3>
+
+            <p>
+                Tómate un minuto para detenerte, respirar
+                y concentrarte en el presente.
+            </p>
+
+            <button onclick="iniciarTemporizador()">
+                Comenzar
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===== HERRAMIENTA ===== -->
+
+<section class="herramienta">
+
+    <div id="contenido-herramienta">
+
+        <h2>
+            Tu espacio aparecerá aquí
+        </h2>
+
+        <p>
+            Selecciona una de las herramientas de CALMA+
+            para comenzar.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ===== SOBRE EL PROYECTO ===== -->
+
+<section class="sobre" id="sobre">
+
+    <div class="etiqueta">
+        SOBRE CALMA+
+    </div>
+
+    <h2>
+        Una pausa también es importante
+    </h2>
+
+    <p>
+        CALMA+ es un prototipo tecnológico creado para
+        brindar un espacio de acompañamiento y relajación
+        ante situaciones de estrés o ansiedad.
+    </p>
+
+    <p>
+        Sus herramientas buscan ayudar al usuario a realizar
+        una pausa, reconocer cómo se siente y elegir una
+        actividad que le resulte cómoda.
+    </p>
+
+</section>
+
+
+<!-- ===== PIE ===== -->
+
+<footer>
+
+    <h3>CALMA+</h3>
+
+    <p>
+        Prototipo tecnológico para el bienestar.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ===== IR A LOS ESPACIOS ===== */
+
+function irAEspacios() {
+
+    document.getElementById("espacios").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* ===== SELECCIONAR ESTADO ===== */
+
+function seleccionarEstado(boton, estado) {
+
+    let botones = document.querySelectorAll(".emociones button");
+
+    botones.forEach(function(b) {
+        b.classList.remove("seleccionado");
+    });
+
+    boton.classList.add("seleccionado");
+
+    document.getElementById("mensaje-estado").textContent =
+        "Has seleccionado: " + estado + ". Puedes elegir un espacio para hacer una pausa.";
+
+}
+
+
+/* ===== MOSTRAR HERRAMIENTA ===== */
+
+function mostrarContenido(titulo, texto, contenido) {
+
+    let zona = document.getElementById("contenido-herramienta");
+
+    let parrafo = texto ? "<p>" + texto + "</p>" : "";
+
+    zona.innerHTML =
+        "<h2>" + titulo + "</h2>" +
+        parrafo +
+        contenido;
+
+    zona.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* ===== RESPIRACIÓN ===== */
+
+function mostrarRespiracion() {
+
+    mostrarContenido(
+
+        "Respiración guiada",
+
+        "Sigue el ritmo del círculo. Inhala lentamente cuando crezca y exhala cuando disminuya.",
+
+        `
+        <div class="respirar-circulo" id="circuloRespirar">
+            Respira
+        </div>
+
+        <button onclick="iniciarRespiracion()">
+            Iniciar
+        </button>
+        `
+
+    );
+
+}
+
+
+function iniciarRespiracion() {
+
+    let circulo = document.getElementById("circuloRespirar");
+
+    if (circulo) {
+
+        circulo.classList.add("respirando");
+
+        circulo.textContent = "Inhala...";
+
+        setTimeout(function() {
+
+            circulo.textContent = "Exhala...";
+
+        }, 3000);
+
+    }
+
+}
+
+
+/* ===== JUEGOS ===== */
+
+function mostrarJuego() {
+
+    mostrarContenido(
+
+        "Juegos relajantes",
+
+        "Elige una actividad sencilla para distraer tu mente por unos minutos.",
+
+        `
+        <div class="juego-menu">
+
+            <button onclick="juegoColor()">
+                Encuentra el color
+            </button>
+
+            <button onclick="juegoBurbujas()">
+                Revienta burbujas
+            </button>
+
+            <button onclick="juegoRespiracionContada()">
+                Cuenta y respira
+            </button>
+
+        </div>
+        `
+
+    );
+
+}
+
+
+/* --- Juego 1: encontrar un color --- */
+
+function juegoColor() {
+
+    let zona = document.getElementById("contenido-herramienta");
+
+    zona.innerHTML =
+        "<h2>Encuentra el color</h2>" +
+        "<p>Busca algo de tu entorno que tenga el color indicado.</p>" +
+        `
+        <div class="juego">
+            <div id="juegoTexto">Busca algo de color AZUL.</div>
+            <button onclick="nuevoJuego()">Cambiar</button>
+        </div>
+
+        <button class="volver" onclick="mostrarJuego()">
+            ← Volver a juegos
+        </button>
+        `;
+
+    zona.scrollIntoView({ behavior: "smooth" });
+
+}
+
+
+function nuevoJuego() {
+
+    let colores = [
+        "AZUL",
+        "VERDE",
+        "BLANCO",
+        "AMARILLO",
+        "ROJO",
+        "MORADO",
+        "NARANJA"
+    ];
+
+    let color =
+        colores[Math.floor(Math.random() * colores.length)];
+
+    document.getElementById("juegoTexto").textContent =
+        "Busca algo de color " + color + ".";
+
+}
+
+
+/* --- Juego 2: reventar burbujas --- */
+
+function juegoBurbujas() {
+
+    let colores = ["#cbe6d6", "#d7e9de", "#bfe0cd", "#e3f1e8", "#a9d6bc"];
+
+    let burbujasHtml = "";
+
+    for (let i = 0; i < 15; i++) {
+
+        burbujasHtml +=
+            '<div class="burbuja" style="background:' +
+            colores[i % colores.length] +
+            '" onclick="reventar(this)"></div>';
+
+    }
+
+    let zona = document.getElementById("contenido-herramienta");
+
+    zona.innerHTML =
+        "<h2>Revienta burbujas</h2>" +
+        "<p>Toca cada burbuja para reventarla, despacio y sin apuro.</p>" +
+        '<div class="burbujas-zona" id="zonaBurbujas">' + burbujasHtml + "</div>" +
+        '<div id="mensajeBurbujas"></div>' +
+        '<button class="volver" onclick="mostrarJuego()">← Volver a juegos</button>';
+
+    zona.scrollIntoView({ behavior: "smooth" });
+
+}
+
+
+function reventar(burbuja) {
+
+    burbuja.classList.add("reventada");
+
+    setTimeout(function() {
+
+        let quedan =
+            document.querySelectorAll("#zonaBurbujas .burbuja:not(.reventada)");
+
+        if (quedan.length === 0) {
+
+            document.getElementById("mensajeBurbujas").innerHTML =
+                "<p style='color:#4f7561; font-weight:bold; margin-top:15px;'>" +
+                "Bien hecho. Nota cómo se sienten tus manos y tu respiración ahora." +
+                "</p>" +
+                "<button onclick='juegoBurbujas()'>Reiniciar</button>";
+
+        }
+
+    }, 250);
+
+}
+
+
+/* --- Juego 3: contar respiraciones --- */
+
+let contadorRespiraciones = 0;
+
+function juegoRespiracionContada() {
+
+    contadorRespiraciones = 0;
+
+    let zona = document.getElementById("contenido-herramienta");
+
+    zona.innerHTML =
+        "<h2>Cuenta y respira</h2>" +
+        "<p>Inhala profundo, exhala lento y presiona el botón después de cada respiración completa.</p>" +
+        '<div class="respiracion-contador" id="contadorRespiracion">0</div>' +
+        '<button onclick="sumarRespiracion()">Respiración completa</button>' +
+        '<div id="mensajeRespiracion"></div>' +
+        '<br>' +
+        '<button class="volver" onclick="mostrarJuego()">← Volver a juegos</button>';
+
+    zona.scrollIntoView({ behavior: "smooth" });
+
+}
+
+
+function sumarRespiracion() {
+
+    contadorRespiraciones++;
+
+    document.getElementById("contadorRespiracion").textContent =
+        contadorRespiraciones;
+
+    if (contadorRespiraciones === 5) {
+
+        document.getElementById("mensajeRespiracion").innerHTML =
+            "<p style='color:#4f7561; margin-top:10px;'>Vas muy bien, sigue a tu propio ritmo.</p>";
+
+    }
+
+    if (contadorRespiraciones === 10) {
+
+        document.getElementById("mensajeRespiracion").innerHTML =
+            "<p style='color:#4f7561; margin-top:10px;'>Diez respiraciones. Puedes quedarte aquí un poco más si lo necesitas.</p>";
+
+    }
+
+}
+
+
+/* ===== CONSEJOS ===== */
+
+const consejosPorCategoria = {
+
+    "Ansiedad": [
+        "No tienes que resolver todo en este momento. Date un pequeño descanso.",
+        "Respira lentamente y concéntrate en lo que puedes hacer ahora.",
+        "Recuerda que sentir ansiedad no significa que estés haciendo algo mal.",
+        "Pon los pies en el suelo y nota tres cosas que puedas escuchar ahora mismo.",
+        "Esta sensación es temporal, aunque en este momento se sienta muy intensa."
+    ],
+
+    "Estrés": [
+        "Está bien tomarte un momento para descansar.",
+        "No todo tiene que resolverse hoy. Elige una sola cosa a la vez.",
+        "Un descanso corto no te atrasa, te ayuda a continuar mejor.",
+        "Baja los hombros, afloja la mandíbula y suelta el aire despacio.",
+        "Pregúntate: ¿qué es lo único que necesito hacer en los próximos diez minutos?"
+    ],
+
+    "Calma": [
+        "Hablar con alguien de confianza puede ayudarte cuando algo se siente difícil.",
+        "Un vaso de agua y un par de respiraciones pueden cambiar cómo te sientes.",
+        "Estar en calma no significa no sentir nada, sino no dejarte arrastrar por eso.",
+        "Date permiso para simplemente estar, sin tener que hacer algo productivo.",
+        "El silencio también es un lugar donde puedes descansar."
+    ],
+
+    "Autoestima": [
+        "Estás haciendo lo mejor que puedes con lo que tienes ahora.",
+        "No necesitas tener todas las respuestas para avanzar un poco cada día.",
+        "Ser amable contigo mismo también es una forma de cuidarte.",
+        "Tus errores no definen tu valor como persona.",
+        "Mereces el mismo cuidado que le darías a alguien que quieres."
+    ]
+
+};
+
+let categoriaConsejoActual = "Ansiedad";
+
+function mostrarConsejo(categoria) {
+
+    if (categoria) {
+        categoriaConsejoActual = categoria;
+    }
+
+    let lista = consejosPorCategoria[categoriaConsejoActual];
+
+    let consejo =
+        lista[Math.floor(Math.random() * lista.length)];
+
+    let botonesCategorias = Object.keys(consejosPorCategoria)
+        .map(function(cat) {
+
+            let clase = cat === categoriaConsejoActual ? "activa" : "";
+
+            return '<button class="' + clase + '" onclick="mostrarConsejo(\'' + cat + '\')">' +
+                cat + "</button>";
+
+        })
+        .join("");
+
+    mostrarContenido(
+
+        "Caja de consejos",
+
+        "",
+
+        `
+        <div class="categorias-consejo">${botonesCategorias}</div>
+
+        <div class="tarjeta-consejo" id="textoConsejo">
+            ${consejo}
+        </div>
+
+        <br>
+
+        <button onclick="mostrarConsejo()">
+            Otro consejo
+        </button>
+        `
+
+    );
+
+}
+
+
+/* ===== CHAT ===== */
+
+function mostrarChat() {
+
+    mostrarContenido(
+
+        "Chat de apoyo",
+
+        "Este chat es un prototipo. Puedes escribir cómo te sientes.",
+
+        `
+        <div class="chat">
+
+            <div id="mensajes">
+                Escribe algo y presiona enviar.
+            </div>
+
+            <input
+                type="text"
+                id="mensajeUsuario"
+                placeholder="¿Cómo te sientes?"
+            >
+
+            <button onclick="enviarMensaje()">
+                Enviar
+            </button>
+
+        </div>
+        `
+
+    );
+
+}
+
+
+function enviarMensaje() {
+
+    let entrada =
+        document.getElementById("mensajeUsuario");
+
+    let mensaje =
+        entrada.value.trim();
+
+    if (mensaje === "") {
+        return;
+    }
+
+    let respuestas = [
+
+        "Gracias por expresarlo. Tómate un momento para respirar y avanzar poco a poco.",
+
+        "Te escucho. Puedes hacer una pequeña pausa y concentrarte en tu respiración.",
+
+        "Lo que sientes puede ser difícil. Si necesitas apoyo, considera hablar con alguien de confianza.",
+
+        "No tienes que solucionar todo de una vez. Puedes empezar por algo pequeño."
+
+    ];
+
+    let respuesta =
+        respuestas[Math.floor(Math.random() * respuestas.length)];
+
+
+    document.getElementById("mensajes").innerHTML =
+        "<strong>Tú:</strong> " + mensaje +
+        "<br><br>" +
+        "<strong>CALMA+:</strong> " + respuesta;
+
+    entrada.value = "";
+
+}
+
+
+/* ===== MÚSICA ===== */
+
+function mostrarMusica() {
+
+    mostrarContenido(
+
+        "Música relajante",
+
+        "Escucha esta selección de canciones tranquilas mientras haces una pausa.",
+
+        `
+        <div class="musica-embed">
+            <iframe
+                data-testid="embed-iframe"
+                style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/2Ej4T7Ab7zaQMllIdbZYsI?utm_source=generator&theme=0&si=a80e9c4d4d0b4ced"
+                width="100%"
+                height="352"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+        </div>
+        `
+
+    );
+
+}
+
+
+/* ===== TEMPORIZADOR ===== */
+
+function iniciarTemporizador() {
+
+    mostrarContenido(
+
+        "Pausa de un minuto",
+
+        "Durante este tiempo intenta respirar lentamente y descansar.",
+
+        `
+        <div class="temporizador" id="temporizador">
+            60
+        </div>
+
+        <button onclick="comenzarCuenta()">
+            Iniciar
+        </button>
+        `
+
+    );
+
+}
+
+
+function comenzarCuenta() {
+
+    let tiempo = 60;
+
+    let pantalla =
+        document.getElementById("temporizador");
+
+    let intervalo =
+        setInterval(function() {
+
+            tiempo--;
+
+            pantalla.textContent = tiempo;
+
+            if (tiempo <= 0) {
+
+                clearInterval(intervalo);
+
+                pantalla.textContent = "Listo";
+
+            }
+
+        }, 1000);
+
+}
+
+</script>
+
+</body>
+</html>
