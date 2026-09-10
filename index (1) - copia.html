@@ -20,11 +20,40 @@ html {
     scroll-behavior: smooth;
 }
 
+:root {
+    --bg: #f5f8f6;
+    --surface: #ffffff;
+    --surface-soft: #edf5f0;
+    --text: #30443b;
+    --text-soft: #687a71;
+    --border: #e5ebe7;
+    --accent: #648c75;
+    --accent-contraste: #ffffff;
+    --circulo-fondo: #d7e9de;
+    --footer-bg: #30443b;
+    --footer-text: #ffffff;
+}
+
+body.oscuro {
+    --bg: #171d19;
+    --surface: #212a24;
+    --surface-soft: #263229;
+    --text: #e7efe9;
+    --text-soft: #a3b6ac;
+    --border: #34423a;
+    --accent: #7fae95;
+    --accent-contraste: #14201a;
+    --circulo-fondo: #2d3d33;
+    --footer-bg: #0f1512;
+    --footer-text: #e7efe9;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f8f6;
-    color: #30443b;
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* ===== NAVEGACIÓN ===== */
@@ -35,32 +64,58 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: white;
-    border-bottom: 1px solid #e5ebe7;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 100;
+    gap: 20px;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .logo {
     font-size: 23px;
     font-weight: bold;
-    color: #496d5b;
+    color: var(--accent);
 }
 
 nav {
     display: flex;
     gap: 25px;
+    margin-left: auto;
 }
 
 nav a {
     text-decoration: none;
-    color: #596d63;
+    color: var(--text-soft);
     font-size: 14px;
 }
 
 nav a:hover {
-    color: #496d5b;
+    color: var(--text);
+}
+
+.navbar-utilidades {
+    display: flex;
+    gap: 10px;
+}
+
+.icono-boton {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.icono-boton:hover {
+    background: var(--border);
 }
 
 /* ===== INICIO ===== */
@@ -72,7 +127,8 @@ nav a:hover {
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    background: #edf5f0;
+    background: var(--surface-soft);
+    transition: background 0.3s ease;
 }
 
 .inicio-contenido {
@@ -82,7 +138,7 @@ nav a:hover {
 .etiqueta {
     font-size: 13px;
     letter-spacing: 2px;
-    color: #72927f;
+    color: var(--text-soft);
     font-weight: bold;
     margin-bottom: 15px;
 }
@@ -95,7 +151,7 @@ nav a:hover {
 
 .descripcion {
     max-width: 540px;
-    color: #687a71;
+    color: var(--text-soft);
     font-size: 17px;
     margin-bottom: 30px;
 }
@@ -104,8 +160,8 @@ nav a:hover {
     border: none;
     padding: 15px 25px;
     border-radius: 25px;
-    background: #648c75;
-    color: white;
+    background: var(--accent);
+    color: var(--accent-contraste);
     font-size: 15px;
     cursor: pointer;
 }
@@ -128,14 +184,15 @@ nav a:hover {
     width: 270px;
     height: 270px;
     border-radius: 50%;
-    background: #d7e9de;
+    background: var(--circulo-fondo);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #577866;
+    color: var(--accent);
     font-size: 25px;
     font-weight: bold;
     box-shadow: 0 20px 50px rgba(60, 90, 75, 0.12);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* ===== ESTADO ===== */
@@ -143,7 +200,8 @@ nav a:hover {
 .estado {
     padding: 90px 8%;
     text-align: center;
-    background: white;
+    background: var(--surface);
+    transition: background 0.3s ease;
 }
 
 .estado h2,
@@ -154,7 +212,7 @@ nav a:hover {
 }
 
 .texto-centro {
-    color: #74837c;
+    color: var(--text-soft);
     margin-bottom: 35px;
 }
 
@@ -167,25 +225,26 @@ nav a:hover {
 
 .emociones button {
     padding: 14px 19px;
-    background: #f6f9f7;
-    border: 1px solid #dfe8e3;
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
     border-radius: 12px;
-    color: #50655b;
+    color: var(--text);
     cursor: pointer;
 }
 
 .emociones button:hover {
-    background: #e8f2ec;
+    background: var(--border);
 }
 
 .emociones button.seleccionado {
-    background: #dceee3;
-    border-color: #70927e;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contraste);
 }
 
 #mensaje-estado {
     margin-top: 25px;
-    color: #527561;
+    color: var(--accent);
     font-weight: bold;
 }
 
@@ -207,8 +266,8 @@ nav a:hover {
 
 .tarjeta {
     padding: 30px;
-    background: white;
-    border: 1px solid #e2eae5;
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 18px;
     transition: 0.3s;
 }
@@ -220,7 +279,7 @@ nav a:hover {
 
 .numero {
     font-size: 13px;
-    color: #8ba495;
+    color: var(--text-soft);
     margin-bottom: 15px;
 }
 
@@ -230,15 +289,15 @@ nav a:hover {
 }
 
 .tarjeta p {
-    color: #718078;
+    color: var(--text-soft);
     font-size: 15px;
     margin-bottom: 22px;
 }
 
 .tarjeta button {
     border: none;
-    background: #edf5f0;
-    color: #4f7561;
+    background: var(--surface-soft);
+    color: var(--accent);
     padding: 10px 17px;
     border-radius: 20px;
     cursor: pointer;
@@ -249,16 +308,18 @@ nav a:hover {
 
 .herramienta {
     padding: 70px 8%;
-    background: white;
+    background: var(--surface);
     text-align: center;
+    transition: background 0.3s ease;
 }
 
 #contenido-herramienta {
     max-width: 700px;
     margin: auto;
     padding: 45px;
-    background: #edf5f0;
+    background: var(--surface-soft);
     border-radius: 25px;
+    transition: background 0.3s ease;
 }
 
 #contenido-herramienta h2 {
@@ -266,7 +327,7 @@ nav a:hover {
 }
 
 #contenido-herramienta p {
-    color: #687870;
+    color: var(--text-soft);
 }
 
 /* ===== RESPIRACIÓN ===== */
@@ -276,11 +337,11 @@ nav a:hover {
     height: 130px;
     margin: 30px auto;
     border-radius: 50%;
-    background: #d5e9dc;
+    background: var(--circulo-fondo);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4f7561;
+    color: var(--accent);
     font-weight: bold;
 }
 
@@ -309,21 +370,96 @@ nav a:hover {
     margin: 25px auto;
 }
 
+.chat-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.avatar-luma {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.chat-encabezado-nombre {
+    text-align: left;
+}
+
+.chat-encabezado-nombre strong {
+    display: block;
+    font-size: 15px;
+    color: var(--text);
+}
+
+.chat-encabezado-nombre span {
+    font-size: 12px;
+    color: var(--text-soft);
+}
+
 #mensajes {
     text-align: left;
-    background: white;
+    background: var(--surface);
     padding: 15px;
     border-radius: 12px;
     margin-bottom: 15px;
-    min-height: 80px;
+    min-height: 120px;
+    max-height: 340px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+}
+
+.fila-mensaje {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.fila-mensaje.usuario {
+    flex-direction: row-reverse;
+}
+
+.avatar-mini {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.burbuja-mensaje {
+    padding: 10px 14px;
+    border-radius: 14px;
+    max-width: 78%;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.burbuja-usuario {
+    background: var(--accent);
+    color: var(--accent-contraste);
+    border-bottom-right-radius: 4px;
+}
+
+.burbuja-bot {
+    background: var(--surface-soft);
+    color: var(--text);
+    border-bottom-left-radius: 4px;
 }
 
 .chat input {
     width: 70%;
     padding: 12px;
-    border: 1px solid #dce5df;
+    border: 1px solid var(--border);
     border-radius: 20px;
     outline: none;
+    background: var(--surface);
+    color: var(--text);
 }
 
 .chat button,
@@ -331,15 +467,15 @@ nav a:hover {
     border: none;
     padding: 12px 20px;
     border-radius: 20px;
-    background: #648c75;
-    color: white;
+    background: var(--accent);
+    color: var(--accent-contraste);
     cursor: pointer;
 }
 
 /* ===== JUEGO (color) ===== */
 
 .juego {
-    background: white;
+    background: var(--surface);
     padding: 25px;
     border-radius: 18px;
     max-width: 500px;
@@ -362,22 +498,65 @@ nav a:hover {
 }
 
 .juego-menu button {
-    background: white;
-    color: #4f7561;
-    border: 1px solid #cfe0d6;
+    background: var(--surface);
+    color: var(--accent);
+    border: 1px solid var(--border);
 }
 
 .juego-menu button:hover {
-    background: #dceee3;
+    background: var(--surface-soft);
 }
 
 .volver {
     margin-top: 25px;
     background: transparent !important;
-    color: #74837c !important;
+    color: var(--text-soft) !important;
     text-decoration: underline;
     font-weight: normal;
     padding: 6px 10px !important;
+}
+
+/* ===== JUEGO DE COLOR MEJORADO ===== */
+
+.color-muestra {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px auto 0;
+    border: 3px solid var(--surface);
+    box-shadow: 0 10px 25px rgba(60, 90, 75, 0.15);
+    transition: background 0.4s ease;
+}
+
+/* ===== MANDALA DE PUNTOS ===== */
+
+.mandala-zona {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    max-width: 320px;
+    margin: 25px auto;
+}
+
+.punto-mandala {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--circulo-fondo);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.punto-mandala:hover {
+    transform: scale(1.15);
+}
+
+/* ===== LIENZO LIBRE ===== */
+
+#lienzo {
+    max-width: 100%;
+    touch-action: none;
+    box-shadow: 0 10px 25px rgba(60, 90, 75, 0.1);
+    border-radius: 16px;
 }
 
 /* ===== BURBUJAS ===== */
@@ -413,17 +592,35 @@ nav a:hover {
 .respiracion-contador {
     font-size: 55px;
     font-weight: bold;
-    color: #4f7561;
+    color: var(--accent);
     margin: 20px;
 }
 
 /* ===== TEMPORIZADOR ===== */
 
-.temporizador {
-    font-size: 45px;
+.temporizador-circular {
+    position: relative;
+    width: 220px;
+    margin: 30px auto 10px;
+}
+
+.temporizador-numero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 46px;
     font-weight: bold;
-    color: #527561;
-    margin: 25px;
+    color: var(--accent);
+}
+
+#circuloProgreso {
+    stroke: var(--accent);
+    transition: stroke-dashoffset 1s linear, stroke 0.3s ease;
+}
+
+#circuloFondo {
+    stroke: var(--border);
 }
 
 /* ===== MÚSICA ===== */
@@ -449,22 +646,22 @@ nav a:hover {
 }
 
 .categorias-consejo button {
-    background: white;
-    border: 1px solid #cfe0d6;
-    color: #50655b;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
     padding: 9px 16px;
     border-radius: 18px;
     font-size: 14px;
 }
 
 .categorias-consejo button.activa {
-    background: #648c75;
-    color: white;
-    border-color: #648c75;
+    background: var(--accent);
+    color: var(--accent-contraste);
+    border-color: var(--accent);
 }
 
 .tarjeta-consejo {
-    background: white;
+    background: var(--surface);
     border-radius: 16px;
     padding: 28px;
     max-width: 480px;
@@ -495,7 +692,7 @@ nav a:hover {
 }
 
 .sobre p {
-    color: #687870;
+    color: var(--text-soft);
     margin-top: 18px;
 }
 
@@ -504,12 +701,150 @@ nav a:hover {
 footer {
     padding: 40px;
     text-align: center;
-    background: #30443b;
-    color: white;
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    transition: background 0.3s ease;
 }
 
 footer p {
     font-size: 14px;
+}
+
+/* ===== MODAL DE BIENVENIDA ===== */
+
+.modal-bienvenida {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 20, 17, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-bienvenida.oculto {
+    display: none;
+}
+
+.modal-caja {
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 24px;
+    padding: 40px 35px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.modal-caja h2 {
+    font-size: 22px;
+    margin: 10px 0 8px;
+}
+
+.modal-caja p {
+    color: var(--text-soft);
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.modal-modos {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.modo-boton {
+    flex: 1;
+    padding: 14px 10px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.modo-boton.activo {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-contraste);
+}
+
+#nombreInicial {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    margin-bottom: 22px;
+    outline: none;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 14px;
+}
+
+.modal-comenzar {
+    width: 100%;
+}
+
+/* ===== PANEL DE EQUIPO ===== */
+
+.panel-equipo {
+    position: fixed;
+    top: 85px;
+    right: 20px;
+    width: 250px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    z-index: 500;
+    transition: transform 0.25s ease, opacity 0.25s ease, background 0.3s ease;
+}
+
+.panel-equipo.oculto {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+.panel-equipo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.panel-equipo-header h3 {
+    font-size: 16px;
+    color: var(--text);
+}
+
+.cerrar-panel {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-soft);
+    line-height: 1;
+}
+
+.panel-equipo-lista {
+    list-style: none;
+}
+
+.panel-equipo-lista li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text);
+}
+
+.panel-equipo-lista li:last-child {
+    border-bottom: none;
 }
 
 /* ===== CELULAR ===== */
@@ -563,6 +898,17 @@ footer p {
     .burbujas-zona {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    .panel-equipo {
+        right: 12px;
+        left: 12px;
+        width: auto;
+        top: 80px;
+    }
+
+    .modal-caja {
+        padding: 32px 24px;
+    }
 }
 
 </style>
@@ -570,6 +916,63 @@ footer p {
 
 
 <body>
+
+<!-- ===== MODAL DE BIENVENIDA ===== -->
+
+<div class="modal-bienvenida" id="modalBienvenida">
+
+    <div class="modal-caja">
+
+        <div class="logo">CALMA+</div>
+
+        <h2>Antes de comenzar</h2>
+
+        <p>
+            Elige cómo se verá tu espacio y cuéntanos cómo te llamas, si gustas.
+        </p>
+
+        <div class="modal-modos">
+
+            <button type="button" class="modo-boton" id="botonModoClaro" onclick="elegirModoInicial('claro')">
+                ☀️ Claro
+            </button>
+
+            <button type="button" class="modo-boton" id="botonModoOscuro" onclick="elegirModoInicial('oscuro')">
+                🌙 Oscuro
+            </button>
+
+        </div>
+
+        <input type="text" id="nombreInicial" placeholder="Tu nombre (opcional)" maxlength="30">
+
+        <button class="boton-principal modal-comenzar" onclick="confirmarBienvenida()">
+            Comenzar
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ===== PANEL DE EQUIPO ===== -->
+
+<div class="panel-equipo oculto" id="panelEquipo">
+
+    <div class="panel-equipo-header">
+        <h3>Equipo CALMA+</h3>
+        <button class="cerrar-panel" onclick="cerrarPanelEquipo()">×</button>
+    </div>
+
+    <ul class="panel-equipo-lista">
+        <li>Leonardo De Freitas</li>
+        <li>Nicole Ramos</li>
+        <li>Josué Roque</li>
+        <li>Jhoan Chávez</li>
+        <li>Victoria Doroteo</li>
+    </ul>
+
+</div>
+
 
 <!-- ===== NAVEGACIÓN ===== -->
 
@@ -586,6 +989,18 @@ footer p {
         <a href="#sobre">Proyecto</a>
     </nav>
 
+    <div class="navbar-utilidades">
+
+        <button class="icono-boton" id="botonModoToggle" onclick="alternarModo()" title="Cambiar modo claro/oscuro">
+            🌙
+        </button>
+
+        <button class="icono-boton" onclick="alternarPanelEquipo()" title="Ver equipo">
+            👥
+        </button>
+
+    </div>
+
 </header>
 
 
@@ -599,7 +1014,7 @@ footer p {
             UN ESPACIO PARA HACER UNA PAUSA
         </div>
 
-        <h1>
+        <h1 id="tituloInicio">
             Respira.<br>
             Tómate un momento para ti.
         </h1>
@@ -892,6 +1307,144 @@ footer p {
 
 <script>
 
+/* ===== ESTADO GLOBAL DE PERSONALIZACIÓN ===== */
+
+let modoActual = "claro";
+let modoInicialSeleccionado = "claro";
+let nombreUsuario = "";
+let emocionActual = null;
+
+const avatarLuma =
+    '<svg class="avatar-luma" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">' +
+    '<circle cx="20" cy="20" r="20" fill="var(--circulo-fondo)"></circle>' +
+    '<circle cx="14" cy="18" r="2.3" fill="var(--accent)"></circle>' +
+    '<circle cx="26" cy="18" r="2.3" fill="var(--accent)"></circle>' +
+    '<path d="M13 25c3 3 11 3 14 0" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round"></path>' +
+    '</svg>';
+
+const avatarLumaMini = avatarLuma.replace('class="avatar-luma"', 'class="avatar-mini"');
+
+
+/* ===== MODAL DE BIENVENIDA ===== */
+
+function elegirModoInicial(modo) {
+
+    modoInicialSeleccionado = modo;
+
+    document.getElementById("botonModoClaro").classList.toggle("activo", modo === "claro");
+    document.getElementById("botonModoOscuro").classList.toggle("activo", modo === "oscuro");
+
+}
+
+
+function confirmarBienvenida() {
+
+    nombreUsuario = document.getElementById("nombreInicial").value.trim();
+
+    aplicarModo(modoInicialSeleccionado);
+    actualizarPersonalizacion();
+
+    document.getElementById("modalBienvenida").classList.add("oculto");
+
+}
+
+
+function aplicarModo(modo) {
+
+    modoActual = modo;
+
+    document.body.classList.toggle("oscuro", modo === "oscuro");
+
+    let boton = document.getElementById("botonModoToggle");
+
+    if (boton) {
+        boton.textContent = modo === "oscuro" ? "☀️" : "🌙";
+    }
+
+    if (emocionActual) {
+        aplicarColorEmocion(emocionActual);
+    }
+
+}
+
+
+function alternarModo() {
+    aplicarModo(modoActual === "oscuro" ? "claro" : "oscuro");
+}
+
+
+function actualizarPersonalizacion() {
+
+    let titulo = document.getElementById("tituloInicio");
+
+    if (titulo) {
+        titulo.innerHTML = nombreUsuario
+            ? "Respira, " + nombreUsuario + ".<br>Tómate un momento para ti."
+            : "Respira.<br>Tómate un momento para ti.";
+    }
+
+}
+
+
+/* ===== PANEL DE EQUIPO ===== */
+
+function alternarPanelEquipo() {
+    document.getElementById("panelEquipo").classList.toggle("oculto");
+}
+
+function cerrarPanelEquipo() {
+    document.getElementById("panelEquipo").classList.add("oculto");
+}
+
+
+/* ===== COLOR SEGÚN EMOCIÓN ===== */
+
+const emocionesColores = {
+
+    "Tranquilo/a": {
+        claro: { acento: "#5b93c9", circulo: "#dbe9f5" },
+        oscuro: { acento: "#8ab8e6", circulo: "#233241" }
+    },
+
+    "Bien": {
+        claro: { acento: "#648c75", circulo: "#d7e9de" },
+        oscuro: { acento: "#7fae95", circulo: "#2d3d33" }
+    },
+
+    "Neutral": {
+        claro: { acento: "#8a8fa6", circulo: "#e4e5ee" },
+        oscuro: { acento: "#a7abc4", circulo: "#2a2c38" }
+    },
+
+    "Estresado/a": {
+        claro: { acento: "#c98a4b", circulo: "#f2e2cf" },
+        oscuro: { acento: "#d9a568", circulo: "#3a2f20" }
+    },
+
+    "Ansioso/a": {
+        claro: { acento: "#c96f6f", circulo: "#f2d9d9" },
+        oscuro: { acento: "#d98d8d", circulo: "#3a2424" }
+    }
+
+};
+
+
+function aplicarColorEmocion(emocion) {
+
+    let paleta = emocionesColores[emocion];
+
+    if (!paleta) {
+        return;
+    }
+
+    let colores = paleta[modoActual];
+
+    document.documentElement.style.setProperty("--accent", colores.acento);
+    document.documentElement.style.setProperty("--circulo-fondo", colores.circulo);
+
+}
+
+
 /* ===== IR A LOS ESPACIOS ===== */
 
 function irAEspacios() {
@@ -914,6 +1467,9 @@ function seleccionarEstado(boton, estado) {
     });
 
     boton.classList.add("seleccionado");
+
+    emocionActual = estado;
+    aplicarColorEmocion(estado);
 
     document.getElementById("mensaje-estado").textContent =
         "Has seleccionado: " + estado + ". Puedes elegir un espacio para hacer una pausa.";
@@ -1012,6 +1568,18 @@ function mostrarJuego() {
                 Cuenta y respira
             </button>
 
+            <button onclick="juegoMandala()">
+                Jardín de puntos
+            </button>
+
+            <button onclick="juegoSentidos()">
+                Los 5 sentidos
+            </button>
+
+            <button onclick="juegoLienzo()">
+                Lienzo libre
+            </button>
+
         </div>
         `
 
@@ -1022,17 +1590,43 @@ function mostrarJuego() {
 
 /* --- Juego 1: encontrar un color --- */
 
+const coloresJuego = [
+    { nombre: "Azul", hex: "#5b8def" },
+    { nombre: "Verde", hex: "#4caf7d" },
+    { nombre: "Amarillo", hex: "#e8c547" },
+    { nombre: "Rojo", hex: "#e07a7a" },
+    { nombre: "Morado", hex: "#9b7bd6" },
+    { nombre: "Naranja", hex: "#e8934a" },
+    { nombre: "Rosado", hex: "#e298c0" },
+    { nombre: "Celeste", hex: "#7fd0d9" },
+    { nombre: "Blanco", hex: "#f4f4f4" }
+];
+
+let rachaColores = 0;
+
 function juegoColor() {
+
+    rachaColores = 0;
 
     let zona = document.getElementById("contenido-herramienta");
 
     zona.innerHTML =
         "<h2>Encuentra el color</h2>" +
-        "<p>Busca algo de tu entorno que tenga el color indicado.</p>" +
+        "<p>Busca a tu alrededor algo que tenga este color. No hay apuro, solo observa.</p>" +
         `
         <div class="juego">
-            <div id="juegoTexto">Busca algo de color AZUL.</div>
-            <button onclick="nuevoJuego()">Cambiar</button>
+
+            <div class="color-muestra" id="colorMuestra"></div>
+
+            <div id="colorNombre" style="font-size:22px; font-weight:bold; margin:15px 0;"></div>
+
+            <div class="juego-menu">
+                <button onclick="colorEncontrado()">¡Lo encontré! 🌿</button>
+                <button onclick="nuevoColor()">Buscar otro</button>
+            </div>
+
+            <div id="colorRacha" style="margin-top:15px; color:#4f7561;"></div>
+
         </div>
 
         <button class="volver" onclick="mostrarJuego()">
@@ -1040,28 +1634,39 @@ function juegoColor() {
         </button>
         `;
 
+    nuevoColor();
+
     zona.scrollIntoView({ behavior: "smooth" });
 
 }
 
 
-function nuevoJuego() {
+function nuevoColor() {
 
-    let colores = [
-        "AZUL",
-        "VERDE",
-        "BLANCO",
-        "AMARILLO",
-        "ROJO",
-        "MORADO",
-        "NARANJA"
+    let c = coloresJuego[Math.floor(Math.random() * coloresJuego.length)];
+
+    document.getElementById("colorMuestra").style.background = c.hex;
+    document.getElementById("colorNombre").textContent = c.nombre;
+
+}
+
+
+function colorEncontrado() {
+
+    rachaColores++;
+
+    let mensajes = [
+        "Bien observado 🌿",
+        "Qué buen ojo 🌱",
+        "Vas con calma, así se hace 🍃",
+        "Un momento de atención tranquila 🌿"
     ];
 
-    let color =
-        colores[Math.floor(Math.random() * colores.length)];
+    document.getElementById("colorRacha").textContent =
+        mensajes[Math.floor(Math.random() * mensajes.length)] +
+        " · Llevas " + rachaColores + (rachaColores === 1 ? " color encontrado" : " colores encontrados");
 
-    document.getElementById("juegoTexto").textContent =
-        "Busca algo de color " + color + ".";
+    nuevoColor();
 
 }
 
@@ -1099,6 +1704,8 @@ function juegoBurbujas() {
 
 function reventar(burbuja) {
 
+    reproducirSonidoBurbuja();
+
     burbuja.classList.add("reventada");
 
     setTimeout(function() {
@@ -1121,23 +1728,178 @@ function reventar(burbuja) {
 }
 
 
-/* --- Juego 3: contar respiraciones --- */
+let contextoAudio = null;
+
+function reproducirSonidoBurbuja() {
+
+    try {
+
+        if (!contextoAudio) {
+            contextoAudio = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        let osc = contextoAudio.createOscillator();
+        let ganancia = contextoAudio.createGain();
+
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(650, contextoAudio.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(180, contextoAudio.currentTime + 0.15);
+
+        ganancia.gain.setValueAtTime(0.18, contextoAudio.currentTime);
+        ganancia.gain.exponentialRampToValueAtTime(0.001, contextoAudio.currentTime + 0.16);
+
+        osc.connect(ganancia);
+        ganancia.connect(contextoAudio.destination);
+
+        osc.start();
+        osc.stop(contextoAudio.currentTime + 0.16);
+
+    } catch (error) {
+        // Si el navegador bloquea el audio, el juego sigue funcionando en silencio.
+    }
+
+}
+
+
+/* --- Juego 3: respiración guiada con fases automáticas --- */
 
 let contadorRespiraciones = 0;
+let respiracionActiva = false;
+let respiracionTimeoutId = null;
+let faseRespiracionActual = 0;
+
+const fasesRespiracion = [
+    { texto: "Inhala...", duracion: 4000, escala: 1.3 },
+    { texto: "Sostén...", duracion: 2000, escala: 1.3 },
+    { texto: "Exhala...", duracion: 6000, escala: 0.85 }
+];
 
 function juegoRespiracionContada() {
 
     contadorRespiraciones = 0;
+    respiracionActiva = false;
+    faseRespiracionActual = 0;
 
     let zona = document.getElementById("contenido-herramienta");
 
     zona.innerHTML =
         "<h2>Cuenta y respira</h2>" +
-        "<p>Inhala profundo, exhala lento y presiona el botón después de cada respiración completa.</p>" +
-        '<div class="respiracion-contador" id="contadorRespiracion">0</div>' +
-        '<button onclick="sumarRespiracion()">Respiración completa</button>' +
-        '<div id="mensajeRespiracion"></div>' +
-        '<br>' +
+        "<p>Sigue el ritmo del círculo: inhala, sostén y exhala. Iremos contando tus ciclos completos.</p>" +
+        `
+        <div class="respirar-circulo" id="circuloRespiracionJuego">Iniciar</div>
+
+        <div class="respiracion-contador" id="contadorRespiracion">0</div>
+
+        <div id="mensajeRespiracion"></div>
+
+        <div class="juego-menu">
+            <button onclick="alternarRespiracion()" id="botonRespiracion">Iniciar</button>
+        </div>
+
+        <br>
+
+        <button class="volver" onclick="pausarYVolverJuegos()">
+            ← Volver a juegos
+        </button>
+        `;
+
+    zona.scrollIntoView({ behavior: "smooth" });
+
+}
+
+
+function alternarRespiracion() {
+
+    respiracionActiva = !respiracionActiva;
+
+    document.getElementById("botonRespiracion").textContent =
+        respiracionActiva ? "Pausar" : "Continuar";
+
+    if (respiracionActiva) {
+        ejecutarFaseRespiracion();
+    } else {
+        clearTimeout(respiracionTimeoutId);
+    }
+
+}
+
+
+function ejecutarFaseRespiracion() {
+
+    if (!respiracionActiva) {
+        return;
+    }
+
+    let fase = fasesRespiracion[faseRespiracionActual];
+    let circulo = document.getElementById("circuloRespiracionJuego");
+
+    circulo.textContent = fase.texto;
+    circulo.style.transition = "transform " + (fase.duracion / 1000) + "s ease-in-out";
+    circulo.style.transform = "scale(" + fase.escala + ")";
+
+    respiracionTimeoutId =
+        setTimeout(function() {
+
+            faseRespiracionActual++;
+
+            if (faseRespiracionActual >= fasesRespiracion.length) {
+
+                faseRespiracionActual = 0;
+                contadorRespiraciones++;
+
+                document.getElementById("contadorRespiracion").textContent =
+                    contadorRespiraciones;
+
+                if (contadorRespiraciones === 3) {
+
+                    document.getElementById("mensajeRespiracion").innerHTML =
+                        "<p style='color:#4f7561;'>Vas muy bien, sigue a tu propio ritmo.</p>";
+
+                }
+
+                if (contadorRespiraciones === 6) {
+
+                    document.getElementById("mensajeRespiracion").innerHTML =
+                        "<p style='color:#4f7561;'>Seis ciclos completos. Puedes parar aquí o seguir un poco más.</p>";
+
+                }
+
+            }
+
+            ejecutarFaseRespiracion();
+
+        }, fase.duracion);
+
+}
+
+
+function pausarYVolverJuegos() {
+
+    respiracionActiva = false;
+    clearTimeout(respiracionTimeoutId);
+    mostrarJuego();
+
+}
+
+
+/* --- Juego 4: jardín de puntos (mandala) --- */
+
+const coloresMandala = ["#d7e9de", "#cbe6d6", "#e3d7ea", "#eadccb", "#d7e2ea", "#e9d7db", "#f4f4f4"];
+
+function juegoMandala() {
+
+    let puntos = "";
+
+    for (let i = 0; i < 30; i++) {
+        puntos += '<div class="punto-mandala" onclick="cambiarPunto(this)"></div>';
+    }
+
+    let zona = document.getElementById("contenido-herramienta");
+
+    zona.innerHTML =
+        "<h2>Jardín de puntos</h2>" +
+        "<p>Toca los puntos para cambiar su color. No hay una forma correcta de hacerlo, solo juega sin pensar demasiado.</p>" +
+        '<div class="mandala-zona" id="mandalaZona">' + puntos + "</div>" +
         '<button class="volver" onclick="mostrarJuego()">← Volver a juegos</button>';
 
     zona.scrollIntoView({ behavior: "smooth" });
@@ -1145,26 +1907,159 @@ function juegoRespiracionContada() {
 }
 
 
-function sumarRespiracion() {
+function cambiarPunto(el) {
 
-    contadorRespiraciones++;
+    let actual = el.style.backgroundColor;
 
-    document.getElementById("contadorRespiracion").textContent =
-        contadorRespiraciones;
+    let siguiente;
 
-    if (contadorRespiraciones === 5) {
+    do {
+        siguiente = coloresMandala[Math.floor(Math.random() * coloresMandala.length)];
+    } while (siguiente === actual);
 
-        document.getElementById("mensajeRespiracion").innerHTML =
-            "<p style='color:#4f7561; margin-top:10px;'>Vas muy bien, sigue a tu propio ritmo.</p>";
+    el.style.background = siguiente;
+
+}
+
+
+/* --- Juego 5: ejercicio de los 5 sentidos --- */
+
+const pasosSentidos = [
+    "Nombra 5 cosas que puedas ver a tu alrededor.",
+    "Nombra 4 cosas que puedas tocar cerca de ti.",
+    "Nombra 3 cosas que puedas escuchar en este momento.",
+    "Nombra 2 cosas que puedas oler.",
+    "Nombra 1 cosa que agradezcas ahora mismo."
+];
+
+let pasoSentidoActual = 0;
+
+function juegoSentidos() {
+
+    pasoSentidoActual = 0;
+    mostrarPasoSentido();
+
+}
+
+
+function mostrarPasoSentido() {
+
+    let zona = document.getElementById("contenido-herramienta");
+
+    if (pasoSentidoActual >= pasosSentidos.length) {
+
+        zona.innerHTML =
+            "<h2>Ejercicio de los 5 sentidos</h2>" +
+            "<p>Bien hecho. Te tomaste un momento para conectar con el presente.</p>" +
+            '<button class="volver" onclick="mostrarJuego()">← Volver a juegos</button>';
+
+        zona.scrollIntoView({ behavior: "smooth" });
+
+        return;
 
     }
 
-    if (contadorRespiraciones === 10) {
+    zona.innerHTML =
+        "<h2>Ejercicio de los 5 sentidos</h2>" +
+        '<div class="tarjeta-consejo">' + pasosSentidos[pasoSentidoActual] + "</div>" +
+        "<br>" +
+        '<button onclick="avanzarSentido()">Listo, siguiente</button>' +
+        "<br><br>" +
+        '<button class="volver" onclick="mostrarJuego()">← Volver a juegos</button>';
 
-        document.getElementById("mensajeRespiracion").innerHTML =
-            "<p style='color:#4f7561; margin-top:10px;'>Diez respiraciones. Puedes quedarte aquí un poco más si lo necesitas.</p>";
+    zona.scrollIntoView({ behavior: "smooth" });
+
+}
+
+
+function avanzarSentido() {
+
+    pasoSentidoActual++;
+    mostrarPasoSentido();
+
+}
+
+
+/* --- Juego 6: lienzo libre --- */
+
+let dibujando = false;
+
+function juegoLienzo() {
+
+    let zona = document.getElementById("contenido-herramienta");
+
+    zona.innerHTML =
+        "<h2>Lienzo libre</h2>" +
+        "<p>Dibuja lo que quieras, sin pensarlo demasiado. Nada de esto se guarda.</p>" +
+        '<canvas id="lienzo" width="320" height="240" style="background:white; border-radius:16px;"></canvas>' +
+        "<br><br>" +
+        '<button onclick="limpiarLienzo()">Borrar</button>' +
+        '<button class="volver" onclick="mostrarJuego()">← Volver a juegos</button>';
+
+    zona.scrollIntoView({ behavior: "smooth" });
+
+    iniciarLienzo();
+
+}
+
+
+function iniciarLienzo() {
+
+    let canvas = document.getElementById("lienzo");
+    let ctx = canvas.getContext("2d");
+
+    ctx.strokeStyle = "#648c75";
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round";
+
+    function obtenerPosicion(e) {
+
+        let rect = canvas.getBoundingClientRect();
+        let origen = e.touches ? e.touches[0] : e;
+
+        return {
+            x: origen.clientX - rect.left,
+            y: origen.clientY - rect.top
+        };
 
     }
+
+    function empezar(e) {
+        dibujando = true;
+        let p = obtenerPosicion(e);
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+    }
+
+    function dibujar(e) {
+        if (!dibujando) return;
+        let p = obtenerPosicion(e);
+        ctx.lineTo(p.x, p.y);
+        ctx.stroke();
+        e.preventDefault();
+    }
+
+    function terminar() {
+        dibujando = false;
+    }
+
+    canvas.addEventListener("mousedown", empezar);
+    canvas.addEventListener("mousemove", dibujar);
+    canvas.addEventListener("mouseup", terminar);
+    canvas.addEventListener("mouseleave", terminar);
+    canvas.addEventListener("touchstart", empezar);
+    canvas.addEventListener("touchmove", dibujar);
+    canvas.addEventListener("touchend", terminar);
+
+}
+
+
+function limpiarLienzo() {
+
+    let canvas = document.getElementById("lienzo");
+    let ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 }
 
@@ -1260,23 +2155,37 @@ function mostrarConsejo(categoria) {
 
 function mostrarChat() {
 
+    chatEstado = {
+        categoria: null,
+        turnos: 0,
+        esperando: null,
+        profundoMostrado: {}
+    };
+
     mostrarContenido(
 
         "Chat de apoyo",
 
-        "Este chat es un prototipo. Puedes escribir cómo te sientes.",
+        "",
 
         `
         <div class="chat">
 
-            <div id="mensajes">
-                Escribe algo y presiona enviar.
+            <div class="chat-encabezado">
+                ${avatarLuma}
+                <div class="chat-encabezado-nombre">
+                    <strong>Luma</strong>
+                    <span>Tu guía en CALMA+ · no reemplaza a un profesional</span>
+                </div>
             </div>
+
+            <div id="mensajes"></div>
 
             <input
                 type="text"
                 id="mensajeUsuario"
                 placeholder="¿Cómo te sientes?"
+                onkeydown="if (event.key === 'Enter') { enviarMensaje(); }"
             >
 
             <button onclick="enviarMensaje()">
@@ -1288,43 +2197,274 @@ function mostrarChat() {
 
     );
 
+    let saludoNombre = nombreUsuario ? ", " + nombreUsuario : "";
+
+    agregarMensajeBot("Hola" + saludoNombre + ", soy Luma. Me alegra que estés aquí. Puedes contarme con calma cómo te sientes, yo te escucho. ¿Cómo estás en este momento?");
+
+}
+
+
+function agregarMensaje(texto, quien) {
+
+    let contenedor = document.getElementById("mensajes");
+
+    let fila = document.createElement("div");
+    fila.className = "fila-mensaje " + (quien === "usuario" ? "usuario" : "bot");
+
+    let burbuja = document.createElement("div");
+    burbuja.className = "burbuja-mensaje " + (quien === "usuario" ? "burbuja-usuario" : "burbuja-bot");
+    burbuja.textContent = texto;
+
+    if (quien !== "usuario") {
+        fila.innerHTML = avatarLumaMini;
+    }
+
+    fila.appendChild(burbuja);
+    contenedor.appendChild(fila);
+    contenedor.scrollTop = contenedor.scrollHeight;
+
+}
+
+function agregarMensajeBot(texto) {
+    agregarMensaje(texto, "bot");
+}
+
+function agregarMensajeUsuario(texto) {
+    agregarMensaje(texto, "usuario");
+}
+
+
+let chatEstado = {
+    categoria: null,
+    turnos: 0,
+    esperando: null,
+    profundoMostrado: {}
+};
+
+const categoriasChat = {
+
+    ansiedad: {
+        palabras: ["ansiedad", "ansioso", "ansiosa", "nervios", "nervioso", "nerviosa", "pánico", "panico", "preocup"],
+        reflejo: [
+            "Gracias por contármelo. Suena que la ansiedad está muy presente ahora mismo, y sé que no es fácil. ¿Desde cuándo te sientes así?",
+            "Te entiendo, la ansiedad puede sentirse abrumadora, como si todo se acelerara de golpe. ¿Qué crees que la está disparando hoy?"
+        ],
+        seguimiento: "Eso pesa de verdad, y quiero que sepas que no tienes que cargarlo solo/a. Una respiración lenta no lo resuelve todo, pero puede bajar la intensidad un poco. ¿Quieres que te guíe en una?",
+        tecnica: "Vamos, aquí contigo: inhala contando hasta 4, sostén el aire 2 segundos y exhala contando hasta 6. Repítelo 3 veces, a tu ritmo, sin apurarte. También tienes el juego 'Cuenta y respira' en la sección de Juegos si prefieres una guía visual. ¿Cómo te sientes después de un par de rondas?"
+    },
+
+    estres: {
+        palabras: ["estrés", "estres", "estresado", "estresada", "agobiado", "agobiada", "abrumado", "abrumada", "no puedo mas", "no puedo más", "no doy mas", "no doy más"],
+        reflejo: [
+            "Suena como que estás cargando muchísimo ahora mismo. Gracias por compartirlo conmigo. ¿Qué es lo que más te está pesando?",
+            "El estrés acumulado cansa de verdad, y mereces un respiro. ¿Es algo puntual o llevas ya un tiempo así?"
+        ],
+        seguimiento: "A veces ayuda escribir todo lo que sientes que debes hacer y elegir solo la primera cosa, sin exigirte más que eso. ¿Quieres que pensemos juntos en una sola cosa que puedas soltar por hoy?",
+        tecnica: "Piensa en una sola tarea que puedas dejar para mañana sin que pase nada grave. Soltar una cosa, aunque sea pequeña, ya alivia un poco la carga. Estás haciendo lo que puedes, y eso ya es suficiente por hoy. ¿Se te ocurre cuál sería esa tarea?"
+    },
+
+    tristeza: {
+        palabras: ["triste", "tristeza", "llorar", "llorando", "deprimido", "deprimida", "vacío", "vacio", "sin ganas"],
+        reflejo: [
+            "Siento mucho que estés pasando por esto. Estoy aquí contigo. ¿Quieres contarme un poco más de lo que está pasando?",
+            "Gracias por confiarme esto. Está bien sentir tristeza, no tienes que apurarte a estar bien. ¿Hay algo puntual que la haya traído hoy?"
+        ],
+        seguimiento: "No tienes que apurarte a estar bien, tómate el tiempo que necesites. A veces ayuda nombrar algo pequeño que aún te dé un poco de calma. ¿Quieres intentar un ejercicio breve para eso?",
+        tecnica: "Nombra 3 cosas que puedas ver ahora mismo, y una sola cosa pequeña que te dé algo de calma, aunque sea mínima. También está el ejercicio 'Los 5 sentidos' en Juegos si quieres hacerlo paso a paso, sin prisa. ¿Cómo te sientes?"
+    },
+
+    soledad: {
+        palabras: ["solo", "sola", "soledad", "nadie", "aislado", "aislada", "nadie me entiende"],
+        reflejo: [
+            "Sentirte solo o sola es doloroso, y lamento que estés pasando por eso. ¿Hace cuánto te sientes así?",
+            "Te escucho, y aunque no pueda abrazarte, quiero que sepas que esto que sientes importa. ¿Hay alguien cercano con quien podrías compartir un poco de esto?"
+        ],
+        seguimiento: "Aquí te estoy leyendo con atención, aunque sé que no reemplaza la compañía de una persona real. ¿Te animarías a escribirle algo breve a alguien de confianza hoy?",
+        tecnica: "No hace falta un mensaje largo, a veces un simple 'te extraño' o '¿podemos hablar?' abre la puerta. Mereces sentirte acompañado/a. ¿Hay alguien en quien estés pensando ahora?"
+    },
+
+    enojo: {
+        palabras: ["enojado", "enojada", "furioso", "furiosa", "rabia", "molesto", "molesta", "harto", "harta"],
+        reflejo: [
+            "Suena frustrante lo que estás viviendo, y tiene sentido que te sientas así. ¿Qué fue lo que lo generó?",
+            "El enojo también es una emoción válida, no tienes que reprimirlo. ¿Quieres contarme qué pasó?"
+        ],
+        seguimiento: "Antes de reaccionar, a veces ayuda dejar que el cuerpo baje un poco de intensidad primero, con calma. ¿Quieres un ejercicio rápido para eso?",
+        tecnica: "Prueba exhalar el doble de tiempo que inhalas, un par de veces. Si puedes, aléjate un momento de la situación antes de responder. Tu enojo es válido, solo cuidemos cómo lo canalizas. ¿Se siente un poco más manejable?"
+    },
+
+    cansancio: {
+        palabras: ["cansado", "cansada", "agotado", "agotada", "sin energía", "sin energia", "exhausto", "exhausta"],
+        reflejo: [
+            "El cansancio también es información importante, y mereces escucharlo. ¿Es más físico, mental, o ambos?",
+            "Suena que necesitas una pausa real. ¿Hace cuánto no descansas de verdad, sin culpa?"
+        ],
+        seguimiento: "Tu cuerpo te está pidiendo bajar el ritmo, no solo un descanso corto. Está bien atender eso. ¿Hay algo que puedas soltar hoy para descansar un poco más?",
+        tecnica: "Si puedes, date permiso para un descanso real hoy, aunque sea corto y sin pantallas. No tienes que resolver todo de una vez, ni hoy ni nunca. ¿Qué tan posible es eso para ti hoy?"
+    }
+
+};
+
+const palabrasCrisis = ["suicid", "matarme", "no quiero vivir", "quitarme la vida", "hacerme daño", "lastimarme", "autolesion", "autolesión", "no vale la pena vivir"];
+const palabrasPersistencia = ["hace tiempo", "todos los dias", "todos los días", "siempre me siento así", "no se me quita", "no se me pasa", "sigue igual", "cada dia", "cada día", "nunca para"];
+const afirmaciones = ["si", "sí", "dale", "claro", "ok", "okay", "bueno", "quiero", "va", "de acuerdo", "obvio", "porfa", "porfavor"];
+const negaciones = ["no", "nel", "ahora no", "paso", "no gracias", "despues", "después"];
+const saludos = ["hola", "buenas", "buenos dias", "buenos días", "buenas tardes", "buenas noches", "hey"];
+const despedidas = ["adios", "adiós", "chau", "nos vemos", "hasta luego", "bye"];
+const agradecimientos = ["gracias", "muchas gracias", "te agradezco"];
+
+
+function mensajeProfundo(categoria) {
+
+    chatEstado.esperando = "otro_recurso";
+
+    let saludoNombre = nombreUsuario ? nombreUsuario + ", " : "";
+
+    return saludoNombre + "por lo que cuentas, esto no es solo de hoy, y quiero acompañarte a buscar algo más sólido que este chat. Hablar con un profesional puede ayudarte mucho más a fondo, y no tiene nada de malo pedir eso. En Perú puedes llamar gratis, las 24 horas, a la Línea 113, opción 5, y hablar con un psicólogo. No hace falta estar en una emergencia para llamar. ¿Quieres que te cuente sobre otro recurso también, o prefieres que sigamos hablando un poco más primero?";
+
+}
+
+
+function generarRespuestaChat(mensajeOriginal) {
+
+    let texto = mensajeOriginal.toLowerCase();
+
+    // Prioridad máxima: señales de crisis, en cualquier momento de la conversación.
+    if (palabrasCrisis.some(p => texto.includes(p))) {
+
+        chatEstado.esperando = null;
+
+        return "Lo que me cuentas es serio, y me alegra que lo hayas puesto en palabras. Quiero que recibas apoyo real, no solo el de este prototipo. En Perú puedes llamar gratis, las 24 horas, a la Línea 113, opción 5, para hablar con un profesional de salud mental. Si estás en peligro inmediato, comunícate también con el 106 o acude al servicio de emergencia más cercano. Por favor, no te quedes con esto en soledad, mereces ayuda de verdad.";
+
+    }
+
+    // Si el bot está esperando una respuesta a una pregunta puntual.
+    if (chatEstado.esperando) {
+
+        let esAfirmacion = afirmaciones.some(p => texto.includes(p));
+        let esNegacion = !esAfirmacion && negaciones.some(p => texto.includes(p));
+
+        if (chatEstado.esperando === "otro_recurso") {
+
+            chatEstado.esperando = null;
+
+            if (esAfirmacion) {
+                return "Claro. También existen los Centros de Salud Mental Comunitaria (CSMC), gratuitos en todo el país si tienes el SIS. Puedes preguntar por el más cercano llamando a la Línea 113. Sigo aquí si quieres contarme más, con calma.";
+            }
+
+            if (esNegacion) {
+                return "Está bien, no hay prisa. Seguimos aquí. Cuéntame qué más sientes, voy contigo.";
+            }
+
+            // No fue claro: se sigue tratando el mensaje como contenido normal.
+
+        } else if (chatEstado.esperando.indexOf("tecnica_") === 0) {
+
+            let categoria = chatEstado.esperando.replace("tecnica_", "");
+            chatEstado.esperando = null;
+
+            if (esAfirmacion || (!esNegacion && texto.length > 0)) {
+                return categoriasChat[categoria].tecnica;
+            }
+
+            if (esNegacion) {
+                return "Está bien, no hay que forzar nada, ni ahora ni nunca. ¿Prefieres contarme un poco más de lo que sientes?";
+            }
+
+        }
+
+    }
+
+    // Saludos, despedidas y agradecimientos.
+    if (saludos.some(p => texto.includes(p)) && texto.length < 20) {
+        let saludoNombre = nombreUsuario ? ", " + nombreUsuario : "";
+        return "Hola" + saludoNombre + ", qué bueno que estés aquí. ¿Cómo te sientes hoy?";
+    }
+
+    if (despedidas.some(p => texto.includes(p))) {
+        return "Cuídate mucho" + (nombreUsuario ? ", " + nombreUsuario : "") + ". Recuerda que la Línea 113, opción 5, está disponible cuando la necesites. Aquí voy a seguir cuando quieras volver a hablar.";
+    }
+
+    if (agradecimientos.some(p => texto.includes(p)) && texto.length < 30) {
+        return "Con todo gusto, de verdad. Estoy aquí si quieres seguir hablando, sin ninguna prisa.";
+    }
+
+    // Detectar categoría emocional.
+    let categoriaDetectada = null;
+
+    for (let clave in categoriasChat) {
+        if (categoriasChat[clave].palabras.some(p => texto.includes(p))) {
+            categoriaDetectada = clave;
+            break;
+        }
+    }
+
+    let indicaPersistencia = palabrasPersistencia.some(p => texto.includes(p));
+
+    if (categoriaDetectada) {
+
+        if (categoriaDetectada === chatEstado.categoria) {
+            chatEstado.turnos++;
+        } else {
+            chatEstado.categoria = categoriaDetectada;
+            chatEstado.turnos = 1;
+        }
+
+        let cat = categoriasChat[categoriaDetectada];
+
+        // Si ya se sugirió ayuda profesional para esta categoría, se acompaña sin repetir el mismo mensaje.
+        if (chatEstado.profundoMostrado[categoriaDetectada]) {
+            return "Sigo aquí, escuchándote con calma. Recuerda que la Línea 113, opción 5, sigue disponible cuando quieras usarla. ¿Qué más sientes?";
+        }
+
+        if (indicaPersistencia || chatEstado.turnos >= 3) {
+            chatEstado.profundoMostrado[categoriaDetectada] = true;
+            return mensajeProfundo(categoriaDetectada);
+        }
+
+        if (chatEstado.turnos === 1) {
+            let lista = cat.reflejo;
+            return lista[Math.floor(Math.random() * lista.length)];
+        }
+
+        // turno 2: ofrecer una técnica concreta
+        chatEstado.esperando = "tecnica_" + categoriaDetectada;
+        return cat.seguimiento;
+
+    }
+
+    // Sin categoría clara: seguir la conversación de forma abierta y cálida.
+    chatEstado.turnos = 0;
+    chatEstado.categoria = null;
+
+    let respuestasAbiertas = [
+        "Cuéntame un poco más sobre eso, aquí estoy para escucharte.",
+        "Te escucho con atención, sigue contándome lo que necesites.",
+        "Entiendo. ¿Cómo te está afectando eso en tu día a día?",
+        "Gracias por compartirlo conmigo. ¿Qué es lo que más te preocupa de esto?",
+        "Valoro que me lo cuentes. ¿Hay algo más que quieras poner en palabras?"
+    ];
+
+    return respuestasAbiertas[Math.floor(Math.random() * respuestasAbiertas.length)];
+
 }
 
 
 function enviarMensaje() {
 
-    let entrada =
-        document.getElementById("mensajeUsuario");
-
-    let mensaje =
-        entrada.value.trim();
+    let entrada = document.getElementById("mensajeUsuario");
+    let mensaje = entrada.value.trim();
 
     if (mensaje === "") {
         return;
     }
 
-    let respuestas = [
-
-        "Gracias por expresarlo. Tómate un momento para respirar y avanzar poco a poco.",
-
-        "Te escucho. Puedes hacer una pequeña pausa y concentrarte en tu respiración.",
-
-        "Lo que sientes puede ser difícil. Si necesitas apoyo, considera hablar con alguien de confianza.",
-
-        "No tienes que solucionar todo de una vez. Puedes empezar por algo pequeño."
-
-    ];
-
-    let respuesta =
-        respuestas[Math.floor(Math.random() * respuestas.length)];
-
-
-    document.getElementById("mensajes").innerHTML =
-        "<strong>Tú:</strong> " + mensaje +
-        "<br><br>" +
-        "<strong>CALMA+:</strong> " + respuesta;
-
+    agregarMensajeUsuario(mensaje);
     entrada.value = "";
+
+    setTimeout(function() {
+        agregarMensajeBot(generarRespuestaChat(mensaje));
+    }, 450);
 
 }
 
@@ -1353,6 +2493,10 @@ function mostrarMusica() {
                 loading="lazy">
             </iframe>
         </div>
+
+        <p style="margin-top:15px; font-size:13px;">
+            ¿No ves el reproductor? <a href="https://open.spotify.com/playlist/2Ej4T7Ab7zaQMllIdbZYsI" target="_blank" style="color:var(--accent);">Abre la playlist directamente en Spotify</a>.
+        </p>
         `
 
     );
@@ -1368,12 +2512,26 @@ function iniciarTemporizador() {
 
         "Pausa de un minuto",
 
-        "Durante este tiempo intenta respirar lentamente y descansar.",
+        "Sigue el anillo mientras respiras con calma. No tienes que hacer nada más.",
 
         `
-        <div class="temporizador" id="temporizador">
-            60
+        <div class="temporizador-circular">
+            <svg width="220" height="220" viewBox="0 0 220 220">
+                <circle cx="110" cy="110" r="100" id="circuloFondo" stroke-width="14" fill="none"></circle>
+                <circle
+                    cx="110" cy="110" r="100"
+                    stroke-width="14" fill="none"
+                    stroke-linecap="round"
+                    id="circuloProgreso"
+                    stroke-dasharray="628.3"
+                    stroke-dashoffset="0"
+                    transform="rotate(-90 110 110)">
+                </circle>
+            </svg>
+            <div class="temporizador-numero" id="temporizador">60</div>
         </div>
+
+        <div id="temporizadorFrase" style="color:var(--accent); min-height:22px; margin-bottom:10px;"></div>
 
         <button onclick="comenzarCuenta()">
             Iniciar
@@ -1388,9 +2546,15 @@ function iniciarTemporizador() {
 function comenzarCuenta() {
 
     let tiempo = 60;
+    const total = 60;
+    const circunferencia = 628.3;
 
-    let pantalla =
-        document.getElementById("temporizador");
+    let circulo = document.getElementById("circuloProgreso");
+    let pantalla = document.getElementById("temporizador");
+    let frase = document.getElementById("temporizadorFrase");
+
+    circulo.style.strokeDashoffset = 0;
+    frase.textContent = "Inhala... exhala...";
 
     let intervalo =
         setInterval(function() {
@@ -1399,17 +2563,34 @@ function comenzarCuenta() {
 
             pantalla.textContent = tiempo;
 
+            circulo.style.strokeDashoffset =
+                circunferencia * (1 - tiempo / total);
+
+            if (tiempo === 40) {
+                frase.textContent = "Vas bien, sigue respirando con calma.";
+            }
+
+            if (tiempo === 20) {
+                frase.textContent = "Ya casi. Nota cómo se siente tu cuerpo ahora.";
+            }
+
             if (tiempo <= 0) {
 
                 clearInterval(intervalo);
 
-                pantalla.textContent = "Listo";
+                pantalla.textContent = "✓";
+                frase.textContent = "Pausa completada. Bien hecho.";
 
             }
 
         }, 1000);
 
 }
+
+
+/* ===== INICIALIZACIÓN ===== */
+
+elegirModoInicial("claro");
 
 </script>
 
